@@ -3,7 +3,7 @@
 cd $1
 
 BRANCH=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
-STATUS=$(git status --porcelain 2>/dev/null | egrep "^(M| M)" | wc -l)
+STATUS=$(git status --porcelain 2>/dev/null | egrep "^(M| M)" | wc -l | xargs)
 
 if [[ -n "$BRANCH" ]]; then
     if [[ "$STATUS" = "0" ]]; then
