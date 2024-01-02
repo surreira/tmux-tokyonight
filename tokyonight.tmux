@@ -1,15 +1,22 @@
 #!/usr/bin/env sh
 
-TOKYONIGHT_THEME="src/tokyonight-storm.conf"
-CURRENT_DIRECTORY="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+get_option() {
+    local OPTION=$1
+    local DEFAULT=$2
+    local -r TMUX_OPTION=$(tmux show-option -gqv "$OPTION")
 
-COLOR=${TMUX_COLOR_MODE:-dark} # default value "dark"
-if [[ $COLOR == "light" ]]; then
-    TOKYONIGHT_THEME="src/tokyonight-day.conf"
-fi
+    if [ -z "$TMUX_OPTION" ]; then
+        echo "$DEFAULT"
+    else
+        echo "$TMUX_OPTION"
+    fi
+}
 
 main() {
-    tmux source-file "$CURRENT_DIRECTORY/$TOKYONIGHT_THEME"
+    local CURRENT_DIRECTORY="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+    local THEME=$(get_option "@tokyonight_theme" "day")
+
+    tmux source-file "$CURRENT_DIRECTORY/src/tokyonight-$THEME.conf"
 }
 
 main
