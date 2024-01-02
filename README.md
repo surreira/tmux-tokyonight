@@ -21,3 +21,12 @@ tmux set -g @tokyonight_theme 'day'
 # or dark mode
 tmux set -g @tokyonight_theme 'storm'
 ```
+
+To disable automatic (macOS only) mode discovery use the setting:
+
+```
+tmux set -g @tokyonight_auto 0
+```
+
+If `@tokyonight_auto` is enabled `@tokyonight_theme` setting will be overwritten
+by the system defined mode.
