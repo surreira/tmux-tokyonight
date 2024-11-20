@@ -40,6 +40,7 @@ main() {
 
     tset status-left-length "100"
     tset status-right-length "100"
+    tset display-time 5000
 
     tset message-style "fg=${tn_fg_dark},bg=${tn_bg}"
     tset message-command-style "fg=${tn_fg_dark},bg=${tn_bg}"
@@ -51,6 +52,9 @@ main() {
 
     tsetw window-status-format "#[fg=${tn_fg_dark},bg=${tn_bg_dark}] #I #W "
     tsetw window-status-current-format "#[fg=${tn_blue},bg=${tn_gutter}] #I #W "
+
+    tset pane-border-style "fg=${tn_gutter}"
+    tset pane-active-border-style "bg=default,fg=${tn_blue}"
 
     tmux "${tmux_commands[@]}"
 }
