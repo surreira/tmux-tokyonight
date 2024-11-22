@@ -25,3 +25,9 @@ tsetw() {
 
     tmux_commands+=(set-window -gq "$option" "$value" ";")
 }
+
+tsetwo() {
+    local option=$1
+    local value=$2
+    tmux_commands+=(set-window-option -g "$option" "$value" ";")
+}

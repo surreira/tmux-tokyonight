@@ -56,6 +56,9 @@ main() {
     tset pane-border-style "fg=${tn_gutter}"
     tset pane-active-border-style "bg=default,fg=${tn_blue}"
 
+    # https://superuser.com/questions/603448/change-tmux-windowlist-selection-color
+    tsetwo mode-style "bg=${tn_blue},fg=${tn_black}"
+
     tmux "${tmux_commands[@]}"
 }
 
